@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  collection,
-  collectionData,
-  Firestore,
-} from '@angular/fire/firestore';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 
-import { Observable } from 'rxjs';
-import Task from '../../interfaces/Task';
+import { catchError, map, Observable } from 'rxjs';
+import Task from '@interfaces/Task';
 import { addDoc } from 'firebase/firestore';
 
 @Injectable({
@@ -18,9 +14,28 @@ export class DataService {
   getData(): Observable<Task[]> {
     const placeRef = collection(this.firestore, 'Tasks');
 
-    return collectionData(placeRef, {
-      idField: 'id',
-    }) as Observable<Task[]>;
+    let data: Observable<Task[]> = (
+      collectionData(placeRef, {
+        idField: 'id',
+      }) as Observable<Task[]>
+    ).pipe(
+      map((tasks: Task[]) => {
+        return tasks.map((task: Task) => {
+          return {
+            id: task.id,
+            title: task.title,
+            description: task.description,
+            date: new Date(task.date),
+            done: task.done,
+          };
+        });
+      }),
+      catchError((error: any) => {
+        throw error;
+      })
+    );
+
+    return data;
   }
 
   async addData(data: Task): Promise<void> {

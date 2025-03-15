@@ -3,9 +3,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@interfaces/*": ["src/app/shared/interfaces/*"],
+      "@interfaces/*": ["src/app/interfaces/*"],
       "@services/*": ["src/app/shared/services/*"],
       "@enviroment/*": ["src/environments/*"],
+      "@components/*": ["src/app/shared/components/*"],
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

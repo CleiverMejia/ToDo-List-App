@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="clipboard-outline"></ion-icon>
+      ToDo List App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light">
+  <ion-searchbar
+    placeholder="Buscar nota"
+    (ionInput)="searchTasks($event)"
+    debounce="250"
+  ></ion-searchbar>
+
+  <p>{{ searchText }}</p>
+
+  <ion-list [inset]="true" lines="inset">
+    <ion-reorder-group [disabled]="false">
+      @for (task of tasks; track $index) {
+        <app-item-task
+          [idTask]="task.id"
+          [title]="task.title"
+          [description]="task.description"
+          [date]="task.date"
+          [done]="task.done"
+          routerLink="/task/{{ task.id }}"
+        />
+      }
+    </ion-reorder-group>
+  </ion-list>
+</ion-content>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button routerLink="/task">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
