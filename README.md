@@ -24,11 +24,14 @@ Este es un proyecto de una aplicación To-Do List creada con **Ionic Framework**
 
 ## Capturas de Pantalla
 
-![Home](https://imgur.com/6Z9t9Jf)
+### Pagina principal
+![Home](https://media.discordapp.net/attachments/1271927187091492875/1351090241993445436/5EDBD083-778A-4C69-8F31-FAC14FB17E7D.png?ex=67d91c57&is=67d7cad7&hm=f7cbe34b962290d1395bafbbf144c7ee534d996da1a852aefbaf9ae2f1ca16b9&=&format=webp&quality=lossless)
 
-![Add Task](https://imgur.com/jH7w7m1)
+### Crear tarea
+![Add Task](https://media.discordapp.net/attachments/1271927187091492875/1351090356732694538/C3BF3B04-56B4-4BCF-86C7-639EADC8EE53.png?ex=67d91c73&is=67d7caf3&hm=28ce779e044e7ebe4a69c5341de8eb6d800377ab2c68e454d400451057e10e2d&=&format=webp&quality=lossless)
 
-![Edit Task](https://imgur.com/FPetWaH)
+### Editar tarea
+![Edit Task](https://media.discordapp.net/attachments/1271927187091492875/1351090453688352818/DFEB97AF-6109-4BC5-A90A-E9DF841AD3F7.png?ex=67d91c8a&is=67d7cb0a&hm=5811ddfed9f4fcd3ff87d2e4b3b3156d070ac72393a7a6fa95aaf0f49833d5b8&=&format=webp&quality=lossless)
 
 ---
 
