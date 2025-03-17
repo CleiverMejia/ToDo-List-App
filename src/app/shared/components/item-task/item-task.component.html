@@ -1,15 +1,14 @@
 <ion-item>
-  <!-- <ion-checkbox
+  <ion-checkbox
       slot="start"
       labelPlacement="end"
       checked="{{ done }}"
-  ></ion-checkbox> -->
+      (ionChange)="setDone($event)"
+  ></ion-checkbox>
 
-  <ion-label>
+  <ion-label (click)="openTask()">
     <h1>{{ title }}</h1>
     <p>{{ description }}</p>
     <p>{{ date|date }}<p>
   </ion-label>
-
-  <!-- <ion-reorder slot="end"></ion-reorder> -->
 </ion-item>

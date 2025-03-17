@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '@services/data/data.service';
-import Task from '@interfaces/Task';
-import { TasksService } from '../../tasks/services/tasks/tasks.service';
+import Task from '@models/Task';
 
 @Component({
   selector: 'app-home',
@@ -10,42 +9,39 @@ import { TasksService } from '../../tasks/services/tasks/tasks.service';
   standalone: false,
 })
 export class HomePage implements OnInit {
-  public allTasks: Task[] = [];
   public tasks: Task[] = [];
-  public searchText: string = '';
 
-  constructor(
-    private dataService: DataService,
-    private tasksService: TasksService
-  ) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.getTasks();
+    this.setTasks();
   }
 
-  getTasks() {
+  setTasks() {
     this.dataService.getData().subscribe({
       next: (data: Task[]) => {
-        this.allTasks = data;
-        this.tasks = this.allTasks
+        this.tasks = data;
       },
       error: (error: Error) => {
         console.error(error);
-      }
+      },
     });
   }
 
   searchTasks(event: Event) {
     const target = event.target as HTMLInputElement;
 
-    if(!target.value) {
-      this.tasks = this.allTasks;
-      return;
-    }
-
-    this.tasks = this.tasksService.filterTaks(
-      this.allTasks,
-      target.value ?? ''
-    );
+    this.dataService.getData().subscribe({
+      next: (data: Task[]) => {
+        this.tasks = !target.value
+          ? data
+          : data.filter((task) =>
+              task.title.toLowerCase().includes(target.value.toLowerCase())
+            );
+      },
+      error: (error: Error) => {
+        console.error(error);
+      },
+    });
   }
 }

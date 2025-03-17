@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'task/:id',
+    path: 'task/:act',
     loadChildren: () => import('./pages/task/task.module').then( m => m.TaskPageModule)
   },
 ];

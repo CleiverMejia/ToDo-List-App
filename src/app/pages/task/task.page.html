@@ -1,24 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-label routerLink="/home">Cancelar</ion-label>
-    <ion-title>ToDo List App</ion-title>
+    <ion-buttons slot="start" (click)="clearTask()" routerLink="/home">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      <ion-icon name="clipboard-outline"></ion-icon>
+      ToDo List App
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" color="light">
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-input placeholder="Titulo"></ion-input>
-    </ion-item>
-  </ion-list>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-input
+          placeholder="Titulo"
+          value="{{ task.title }}"
+          formControlName="title"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
 
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-textarea
-        [counter]="true"
-        placeholder="Comienza a escribir desde aqui..."
-        rows="10"
-      ></ion-textarea>
-    </ion-item>
-  </ion-list>
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-textarea
+          placeholder="Comienza a escribir desde aqui..."
+          value="{{ task.description }}"
+          rows="10"
+          formControlName="description"
+        ></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button [disabled]="myForm.invalid" (click)="onSubmit()">
+    <ion-icon name="save-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+@if(act && act === 'edit') {
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button color="danger" id="delete">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-alert
+    trigger="delete"
+    header="Estas seguro que quieres eliminar esta nota?"
+    [buttons]="alertButtons"
+  ></ion-alert>
+}

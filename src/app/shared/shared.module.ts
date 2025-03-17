@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DataService } from './services/data/data.service';
-import { ItemTaskComponent } from './components/item-task/item-task.component';
+import { ItemTaskComponent } from '@components/item-task/item-task.component'
 import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
-const COMPONENTS = [ ItemTaskComponent];
+const COMPONENTS = [ItemTaskComponent];
 
 const PROVIDERS = [DataService];
 
-const IMPORTS = [CommonModule, IonicModule];
+const IMPORTS = [CommonModule ,IonicModule];
 
 @NgModule({
   declarations: [...COMPONENTS],

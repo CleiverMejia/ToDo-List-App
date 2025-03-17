@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TasksService } from './services/tasks/tasks.service';
-
-
+import { StorageService } from './services/storage/storage.service';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  providers: [TasksService]
+  providers: [StorageService]
 })
 export class TasksModule { }

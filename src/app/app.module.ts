@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TasksModule } from './tasks/tasks.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { TasksModule } from './tasks/tasks.module';
     SharedModule,
     TasksModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
